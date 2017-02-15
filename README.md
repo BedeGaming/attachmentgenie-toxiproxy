@@ -45,7 +45,7 @@ You can customize parameters when declaring the `toxiproxy` class. For instance,
 ``` puppet
 class { '::toxiproxy':
   install_method => 'wget',
-  wget_source    => 'https://github.com/toxiproxy/toxiproxy/releases/download/v0.2.1/toxiproxy_linux_amd64',
+  wget_source    => 'https://github.com/Shopify/toxiproxy/releases/download/v2.0.0/toxiproxy-server-linux-amd64',
 }
 ```
 

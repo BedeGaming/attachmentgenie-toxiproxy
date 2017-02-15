@@ -1,12 +1,10 @@
-# Class to install and configure apache toxiproxy.
+# Class to install and configure toxiproxy.
 #
-# Use this module to install and configure apache toxiproxy.
+# Use this module to install and configure toxiproxy.
 #
 # @example Declaring the class
 #   include ::toxiproxy
 #
-# @param config (String) toxiproxy config.
-# @param config_file (String) toxiproxy config file.
 # @param install_dir (String) Location of toxiproxy binary release.
 # @param install_method (String) How to install toxiproxy.
 # @param manage_service (Boolean) Manage the toxiproxy service.
@@ -16,8 +14,6 @@
 # @param service_provider (String) init system that is used.
 # @param wget_source (String) Location of toxiproxy binary release.
 class toxiproxy (
-  $config           = $::toxiproxy::params::config,
-  $config_file      = $::toxiproxy::params::config_file,
   $install_dir      = $::toxiproxy::params::install_dir,
   $install_method   = $::toxiproxy::params::install_method,
   $manage_service   = $::toxiproxy::params::manage_service,
@@ -31,7 +27,6 @@ class toxiproxy (
     $manage_service,
   )
   validate_string(
-    $config_file,
     $install_dir,
     $install_method,
     $package_name,

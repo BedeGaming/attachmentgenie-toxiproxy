@@ -3,7 +3,6 @@
 # Dont include this class directly.
 #
 class toxiproxy::params () {
-  $config          = '-ui-bind-addr=127.0.0.1:8025 -api-bind-addr=127.0.0.1:8025'
   $install_dir     = '/usr/bin'
   $install_method  = 'package'
   $manage_service  = true
@@ -14,7 +13,6 @@ class toxiproxy::params () {
   $wget_source     = undef
   case $::osfamily {
     'Debian': {
-      $config_file = '/etc/default/toxiproxy'
       case $::operatingsystemrelease {
         /(7.*|14\.04.*)/ : {
           $service_provider = 'debian'
@@ -25,7 +23,6 @@ class toxiproxy::params () {
       }
     }
     'RedHat': {
-      $config_file = '/etc/sysconfig/toxiproxy'
       case $::operatingsystemrelease {
         /6.*/ : {
           $service_provider = 'redhat'
