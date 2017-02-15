@@ -21,8 +21,6 @@ USER=nobody
 BIN="<%= scope['toxiproxy::install_dir'] %>/toxiproxy"
 NAME="<%= scope['toxiproxy::service_name'] %>"
 
-[ -e <%= scope['toxiproxy::config_file'] %> ] && . <%= scope['toxiproxy::config_file'] %>
-
 # Carry out specific functions when asked to by the system
 
 start() {

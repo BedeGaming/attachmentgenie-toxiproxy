@@ -14,10 +14,10 @@
 
 ## Module Description
 
-toxiproxy is an email testing tool for developers:
+toxiproxy is an chaos testing tool for developers:
 
-    - Configure your application to use toxiproxy for SMTP delivery
-    - View messages in the web UI, or retrieve them with the JSON API
+    - Configure your application to use toxiproxy.
+    - test how your application deals with failure
 
 ## Setup
 

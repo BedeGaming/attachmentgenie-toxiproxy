@@ -4,6 +4,5 @@ After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=<%= scope['toxiproxy::config_file'] %>
 ExecStart=<%= scope['toxiproxy::install_dir'] %>/toxiproxy $toxiproxy_OPTS > /dev/null 2>&1
 ExecStop=<%= scope['toxiproxy::install_dir'] %>/toxiproxy > /dev/null 2>&1
