@@ -1,0 +1,50 @@
+{
+  "name": "attachmentgenie-toxiproxy",
+  "version": "1.0.1",
+  "author": "bram vogelaar <bram@attachmentgenie.com>",
+  "summary": "Setup toxiproxy",
+  "license": "MIT",
+  "source": "https://github.com/attachmentgenie/attachmentgenie-toxiproxy.git",
+  "project_page": "https://github.com/attachmentgenie/attachmentgenie-toxiproxy",
+  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-toxiproxy/issues",
+  "tags": [
+    "toxiproxy"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0 <=4.12.0"
+    },
+    {
+      "name": "camptocamp-systemd",
+      "version_requirement": ">=0.4.0 <1.0.0"
+    },
+    {
+      "name": "maestrodev-wget",
+      "version_requirement": ">=1.7.3 <2.0.0"
+    }
+  ]
+}

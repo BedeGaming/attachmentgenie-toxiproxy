@@ -1,0 +1,68 @@
+#!/usr/bin/env sh
+# /etc/init.d/toxiproxy
+#
+# chkconfig:   2 3 4 5 90 60
+# description: Enable toxiproxy.
+
+### BEGIN INIT INFO
+# Provides:          toxiproxy
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Should-Start:
+# Should-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start toxiproxy at boot time.
+# Description:       Enable toxiproxy.
+### END INIT INFO
+
+PID=/var/run/toxiproxy.pid
+USER=nobody
+BIN="<%= scope['toxiproxy::install_dir'] %>/toxiproxy"
+NAME="<%= scope['toxiproxy::service_name'] %>"
+
+[ -e <%= scope['toxiproxy::config_file'] %> ] && . <%= scope['toxiproxy::config_file'] %>
+
+# Carry out specific functions when asked to by the system
+
+start() {
+  echo -n $"Starting $NAME: "
+  start-stop-daemon --start --pidfile $PID --make-pidfile --user $USER --background --exec $BIN -- $toxiproxy_OPTS
+}
+
+stop() {
+  if [ -f $PID ]; then
+    echo -n $"Stopping $NAME: "
+    start-stop-daemon --stop --pidfile $PID
+    rm -f $PID
+  else
+    echo -n $"$NAME is not running."
+  fi
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  status)
+    if [ -f $PID ]; then
+      echo -n $"$NAME is running."
+    else
+      echo -n $"$NAME is not running."
+      exit 3
+    fi
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|status|restart}"
+    exit 2
+    ;;
+esac
+
+exit $?
