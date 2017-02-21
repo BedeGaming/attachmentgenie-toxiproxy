@@ -1,6 +1,6 @@
 {
   "name": "attachmentgenie-toxiproxy",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "bram vogelaar <bram@attachmentgenie.com>",
   "summary": "Setup toxiproxy",
   "license": "MIT",
