@@ -14,7 +14,7 @@ class toxiproxy::params () {
   case $::osfamily {
     'Debian': {
       case $::operatingsystemrelease {
-        /(7.*|14\.04.*)/ : {
+        /(^7.*|^14\.04.*)/ : {
           $service_provider = 'debian'
         }
         default : {
@@ -24,7 +24,7 @@ class toxiproxy::params () {
     }
     'RedHat': {
       case $::operatingsystemrelease {
-        /6.*/ : {
+        /^6.*/ : {
           $service_provider = 'redhat'
         }
         default : {
