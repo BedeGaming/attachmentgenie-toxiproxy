@@ -40,9 +40,9 @@ class toxiproxy (
     )
   }
 
-  anchor { 'toxiproxy::begin': } ->
-  class{ '::toxiproxy::install': } ->
-  class{ '::toxiproxy::config': } ~>
-  class{ '::toxiproxy::service': } ->
-  anchor { 'toxiproxy::end': }
+  anchor { 'toxiproxy::begin': }
+  -> class{ '::toxiproxy::install': }
+  -> class{ '::toxiproxy::config': }
+  ~> class{ '::toxiproxy::service': }
+  -> anchor { 'toxiproxy::end': }
 }

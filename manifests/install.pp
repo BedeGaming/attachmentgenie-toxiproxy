@@ -12,14 +12,14 @@ class toxiproxy::install {
     'wget': {
       file { $::toxiproxy::install_dir:
         ensure => directory,
-      } ->
-      wget::fetch { '/usr/bin/toxiproxy':
+      }
+      -> wget::fetch { '/usr/bin/toxiproxy':
         source      => $::toxiproxy::wget_source,
         destination => "${::toxiproxy::install_dir}/toxiproxy",
         timeout     => 0,
         verbose     => false,
-      } ->
-      file { "${::toxiproxy::install_dir}/toxiproxy":
+      }
+      -> file { "${::toxiproxy::install_dir}/toxiproxy":
         group => 'root',
         mode  => '0755',
         owner => 'root',
