@@ -6,16 +6,17 @@ class toxiproxy::service {
   if $::toxiproxy::manage_service {
     case $::toxiproxy::service_provider {
       'debian','init','redhat': {
-        file { "/etc/init.d/${::toxiproxy::service_name}":
+        file { 'toxiproxy service file':
+          path    => "/etc/init.d/${::toxiproxy::service_name}",
           content => template("toxiproxy/toxiproxy.init.${::osfamily}.erb"),
           mode    => '0755',
-          notify  => Service[$::toxiproxy::service_name],
+          notify  => Service['toxiproxy'],
         }
       }
       'systemd': {
         ::systemd::unit_file { "${::toxiproxy::service_name}.service":
           content => template('toxiproxy/toxiproxy.service.erb'),
-          before  => Service[$::toxiproxy::service_name],
+          before  => Service['toxiproxy'],
         }
       }
       default: {
@@ -25,8 +26,8 @@ class toxiproxy::service {
 
     case $::toxiproxy::install_method {
       'package': {
-        Service[$::toxiproxy::service_name] {
-          subscribe => Package[$::toxiproxy::package_name],
+        Service['toxiproxy'] {
+          subscribe => Package['toxiproxy'],
         }
       }
       'wget': {}
@@ -35,9 +36,10 @@ class toxiproxy::service {
       }
     }
 
-    service { $::toxiproxy::service_name:
+    service { 'toxiproxy':
       ensure   => running,
       enable   => true,
+      name     => $::toxiproxy::service_name,
       provider => $::toxiproxy::service_provider,
     }
   }

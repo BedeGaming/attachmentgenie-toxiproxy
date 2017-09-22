@@ -5,24 +5,27 @@
 class toxiproxy::install {
   case $::toxiproxy::install_method {
     'package': {
-      package { $::toxiproxy::package_name:
+      package { 'toxiproxy':
         ensure => $::toxiproxy::package_version,
+        name   => $::toxiproxy::package_name,
       }
     }
     'wget': {
-      file { $::toxiproxy::install_dir:
+      file { 'toxiproxy install dir':
         ensure => directory,
+        path   => $::toxiproxy::install_dir,
       }
-      -> wget::fetch { '/usr/bin/toxiproxy':
+      -> wget::fetch { 'toxiproxy binary':
         source      => $::toxiproxy::wget_source,
         destination => "${::toxiproxy::install_dir}/toxiproxy",
         timeout     => 0,
         verbose     => false,
       }
-      -> file { "${::toxiproxy::install_dir}/toxiproxy":
+      -> file { 'toxiproxy binary':
         group => 'root',
         mode  => '0755',
         owner => 'root',
+        path  => "${::toxiproxy::install_dir}/toxiproxy",
       }
     }
     default: {

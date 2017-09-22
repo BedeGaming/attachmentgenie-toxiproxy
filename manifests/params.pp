@@ -10,6 +10,7 @@ class toxiproxy::params () {
   $package_name    = 'toxiproxy'
   $package_version = 'present'
   $service_name    = 'toxiproxy'
+  $service_ensure  = 'running'
   $wget_source     = undef
   case $::osfamily {
     'Debian': {
