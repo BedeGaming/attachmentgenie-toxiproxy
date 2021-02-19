@@ -15,15 +15,15 @@
 # @param service_ensure The state of the service.
 # @param wget_source Location of toxiproxy binary release.
 class toxiproxy (
-  String $install_dir = $::toxiproxy::params::install_dir,
-  Enum['package','wget'] $install_method = $::toxiproxy::params::install_method,
-  Boolean $manage_service = $::toxiproxy::params::manage_service,
-  String $package_name = $::toxiproxy::params::package_name,
-  String $package_version = $::toxiproxy::params::package_version,
-  String $service_name = $::toxiproxy::params::service_name,
-  String $service_provider = $::toxiproxy::params::service_provider,
-  Enum['running','stopped'] $service_ensure = $::toxiproxy::params::service_ensure,
-  Optional[String] $wget_source = $::toxiproxy::params::wget_source,
+  $install_dir = $::toxiproxy::params::install_dir,
+  $install_method = $::toxiproxy::params::install_method,
+  $manage_service = $::toxiproxy::params::manage_service,
+  $package_name = $::toxiproxy::params::package_name,
+  $package_version = $::toxiproxy::params::package_version,
+  $service_name = $::toxiproxy::params::service_name,
+  $service_provider = $::toxiproxy::params::service_provider,
+  $service_ensure = $::toxiproxy::params::service_ensure,
+  $wget_source = $::toxiproxy::params::wget_source,
 ) inherits toxiproxy::params {
   anchor { 'toxiproxy::begin': }
   -> class{ '::toxiproxy::install': }
