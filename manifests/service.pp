@@ -14,9 +14,11 @@ class toxiproxy::service {
         }
       }
       'systemd': {
-        ::systemd::unit_file { "${::toxiproxy::service_name}.service":
+        file { 'toxiproxy service file':
+          path    => "/etc/init.d/${::toxiproxy::service_name}",
           content => template('toxiproxy/toxiproxy.service.erb'),
-          before  => Service['toxiproxy'],
+          mode    => '0755',
+          notify  => Service['toxiproxy'],
         }
       }
       default: {
