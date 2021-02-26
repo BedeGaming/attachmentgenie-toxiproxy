@@ -16,7 +16,7 @@ class toxiproxy::service {
       'systemd': {
         file { 'toxiproxy service file':
           path    => "/etc/init.d/${::toxiproxy::service_name}",
-          content => template('toxiproxy/toxiproxy.service.erb'),
+          content => template('toxiproxy/toxiproxy.init.RedHat.erb'),
           mode    => '0755',
           notify  => Service['toxiproxy'],
         }
