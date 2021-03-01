@@ -21,6 +21,7 @@
 
 BIN="<%= scope['toxiproxy::install_dir'] %>/toxiproxy"
 NAME="<%= scope['toxiproxy::service_name'] %>"
+toxiproxy_OPTS="-port 8474 -host 0.0.0.0"
 
 lockfile=/var/lock/subsys/$NAME
 

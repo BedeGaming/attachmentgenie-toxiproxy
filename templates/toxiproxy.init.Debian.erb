@@ -20,6 +20,7 @@ PID=/var/run/toxiproxy.pid
 USER=nobody
 BIN="<%= scope['toxiproxy::install_dir'] %>/toxiproxy"
 NAME="<%= scope['toxiproxy::service_name'] %>"
+toxiproxy_OPTS="-port 8474 -host 0.0.0.0"
 
 # Carry out specific functions when asked to by the system
 

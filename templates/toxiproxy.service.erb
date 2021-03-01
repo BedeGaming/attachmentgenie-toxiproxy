@@ -4,5 +4,5 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=<%= scope['toxiproxy::install_dir'] %>/toxiproxy $toxiproxy_OPTS > /dev/null 2>&1
+ExecStart=<%= scope['toxiproxy::install_dir'] %>/toxiproxy -port 8474 -host 0.0.0.0 > /dev/null 2>&1
 ExecStop=<%= scope['toxiproxy::install_dir'] %>/toxiproxy > /dev/null 2>&1

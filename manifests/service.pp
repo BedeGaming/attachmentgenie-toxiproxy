@@ -20,6 +20,11 @@ class toxiproxy::service {
           mode    => '0755',
           notify  => Service['toxiproxy'],
         }
+
+        file { "/etc/systemd/system/${::toxiproxy::service_name}":
+          ensure => present,
+          source => "/etc/init.d/${::toxiproxy::service_name}",
+        } 
       }
       default: {
         fail("Service provider ${::toxiproxy::service_provider} not supported")
